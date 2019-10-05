@@ -13,6 +13,10 @@ class TrackingObject {
 		this.focal = focal
   }
 
+	setRealR = (realR) => {
+		this.realR = realR
+	}
+
   setHSVFilter = (lower, higher) => {
 		this.lowerHsv = lower
 		this.higherHsv = higher

@@ -9,6 +9,12 @@ document.getElementById('hsvSliders').addEventListener('change', (e) => {
   processImage()
 })
 
+document.getElementById('realR').addEventListener('change', (e) => {
+  initialObj.setRealR(e.target.value)
+  finalObj.setRealR(e.target.value)
+  processImage()
+})
+
 let imgElement = document.getElementById('imageOriginal');
 let inputElement = document.getElementById('imageInput');
 inputElement.addEventListener('change', (e) => {
@@ -104,7 +110,7 @@ function processImage() {
 
     cv.imshow('imageCanvas', src)
 
-    document.getElementById('button').disabled = false
+    // document.getElementById('button').disabled = false
 
     lowInitial.delete()
     highInitial.delete()
@@ -120,15 +126,17 @@ function processImage() {
 };
 
 
-document.getElementById('button').onclick = function() {
+/*document.getElementById('button').onclick = function() {
   this.href = document.getElementById("imageCanvas").toDataURL();
   this.download = "image.png";
-};
+};*/
 
 function onOpenCvReady() {
   
-  initialObj = new TrackingObject(cv, 1.5, 1000)
-  finalObj = new TrackingObject(cv, 1.5, 1000)
+  let realR = document.getElementById('realR').value
+
+  initialObj = new TrackingObject(cv, realR, 1000)
+  finalObj = new TrackingObject(cv, realR, 1000)
   
   initialObj.setHSVFilter([parseFloat(document.getElementById('initialLowH').value), parseFloat(document.getElementById('initialLowS').value), parseFloat(document.getElementById('initialLowV').value), 0], [parseFloat(document.getElementById('initialHighH').value), parseFloat(document.getElementById('initialHighS').value),parseFloat(document.getElementById('initialHighV').value), 255]);
   finalObj.setHSVFilter([parseFloat(document.getElementById('finalLowH').value), parseFloat(document.getElementById('finalLowS').value), parseFloat(document.getElementById('finalLowV').value), 0], [parseFloat(document.getElementById('finalHighH').value), parseFloat(document.getElementById('finalHighS').value), parseFloat(document.getElementById('finalHighV').value), 255]);
