@@ -106,7 +106,7 @@ function processImage() {
     const distance = initialObj.calculateDistanceBetweenObjct(finalObj)
 
     if (distance)
-      document.getElementById('results').innerHTML =`The distance is ${distance.distanceBetweenCm.toFixed(2)} cm!`
+      document.getElementById('results').innerHTML =`The distance is ${distance.distanceBetweenCm.toFixed(8)} cm!`
 
     cv.imshow('imageCanvas', src)
 
