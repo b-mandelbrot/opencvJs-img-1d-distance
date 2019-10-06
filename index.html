@@ -27,13 +27,12 @@ body.loading .modal {
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 	<div class="jumbotron">
     	<h1>One dimensional distance detector</h1> 
     	<p>This website uses OpenCVJS to detect distance in px and cm between two objects of given colors</p>
     </div>
-	<div class="row">
-  		<div class="col-sm">
+	<div class="row justify-content-center" style="margin-bottom: 20px;">
   			<div class="card">
 			  	<div class="card-header">
 			    Here comes your original Image:
@@ -45,33 +44,27 @@ body.loading .modal {
 			    	<input type="file" id="imageInput" name="file" />
 			  	</div>
 			</div>
-  		</div>
-  		<div class="col-sm">
-  			<div class="card">
-			  	<div class="card-header">
-			    Your brand new and modified image:
-			  	</div>
-			  	<div class="card-block">
-			    	<canvas id="imageCanvas"></canvas>
-			  	</div>
-			  	<!--<ul class="list-group list-group-flush">
-				    <li class="list-group-item">
-              <button type="button" id="button" class="btn btn-secondary" disabled>Download Modified Image</a>
-            </li>
-				</ul>-->
-				<div class="card-footer">
-            <h3>Our results:</h3>
-            <p id="results"></p>
-				</div>
-			</div>
-  		</div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-header">
+        Your brand new and modified image:
+        </div>
+        <div class="card-block">
+          <canvas id="imageCanvas" style="max-width: 100%"></canvas>
+        </div>
+      <div class="card-footer">
+          <h3>Our results:</h3>
+          <p id="results"></p>
+      </div>
+    </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
         <div class="col-sm" id="hsvSliders">
           <h3>General settings: </h3>
           <br/>
           <h4>Real Objects radious(cm):</h4>
-          <input id="realR" type="number" value=1.5 style="margin-bottom: 20px;">
+          <input id="realR" type="number" value=1.8 style="margin-bottom: 20px;">
           <h4>HSV filters:</h4>
           <span>Initial object Low H:</span>
           <input type="range" min="0" max="180" value="134" class="slider" id="initialLowH">

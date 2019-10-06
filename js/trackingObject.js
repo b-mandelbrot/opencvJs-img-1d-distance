@@ -1,6 +1,6 @@
 
 class TrackingObject {
-  constructor(cv, realR, minArea, opening, closing, rectSize, focal = 1) {
+  constructor(cv, realR, minArea, opening, closing, rectSize, focal) {
     this.cv = cv
     this.opening = opening || 8
     this.closing = closing || 8
@@ -10,7 +10,7 @@ class TrackingObject {
     this.R = 0
     this.realR = realR
 		this.minArea = minArea
-		this.focal = focal
+		this.focal = focal || 400
   }
 
 	setRealR = (realR) => {
@@ -41,7 +41,7 @@ class TrackingObject {
 		this.R = Math.sqrt((dArea / 255) / 3.14);
 
 		// Calculate the distance between the Object and the camera
-		this.distanceFromCamera = ((this.focal || 1) * this.realR) / this.R;
+		this.distanceFromCamera = ((this.focal) * this.realR) / this.R;
 	}
 
 	drawCircle(img, color = [255,0,0, 255])
@@ -62,7 +62,7 @@ class TrackingObject {
 		if (this.R != 0 && obj.R != 0)
 		{
 			let distanceBetweenPx = Math.sqrt(Math.pow((obj.x - this.x), 2) + Math.pow((obj.y - this.y), 2));
-			let distanceBetweenCm = distanceBetweenPx * this.distanceFromCamera / (this.focal || 1);
+			let distanceBetweenCm = distanceBetweenPx * this.distanceFromCamera / (this.focal);
 			return {distanceBetweenCm, distanceBetweenPx};
 		}
 		return null;

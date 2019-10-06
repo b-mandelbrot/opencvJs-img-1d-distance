@@ -106,11 +106,9 @@ function processImage() {
     const distance = initialObj.calculateDistanceBetweenObjct(finalObj)
 
     if (distance)
-      document.getElementById('results').innerHTML =`px: ${distance.distanceBetweenPx}\ncm: ${distance.distanceBetweenCm}`
+      document.getElementById('results').innerHTML =`The distance is ${distance.distanceBetweenCm.toFixed(2)} cm!`
 
     cv.imshow('imageCanvas', src)
-
-    // document.getElementById('button').disabled = false
 
     lowInitial.delete()
     highInitial.delete()
@@ -124,12 +122,6 @@ function processImage() {
     console.log(err)
   }
 };
-
-
-/*document.getElementById('button').onclick = function() {
-  this.href = document.getElementById("imageCanvas").toDataURL();
-  this.download = "image.png";
-};*/
 
 function onOpenCvReady() {
   
